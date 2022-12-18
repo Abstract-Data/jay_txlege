@@ -147,8 +147,3 @@ class LegislativeMember:
 
     def get_bill(self, chamber, number):
         return self.legislation.get(f"{chamber.upper()} {number}")
-
-
-house87 = TxLegeLoader("house")
-house88 = TxLegeLoader("house", lege_session="88R")
-senate88 = TxLegeLoader("senate", lege_session="88R")
