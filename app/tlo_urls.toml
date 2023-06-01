@@ -5,6 +5,7 @@ MEMBER-LIST = "Members/Members.aspx?Chamber={}"
 
 [MEMBER-URLS]
 BILL-LIST = "reports/report.aspx?LegSess={}&ID=author&Code={}"
+BILL-LOOKUP = "BillLookup/History.aspx?LegSess={}&Bill={}"
 
 [BILL-DETAIL-URLS]  # These URLS are used to get the bill information. 3 vars are used: Legislative Session, Chamber, and Bill Number
     BillText.Introduced = "tlodocs/{}/billtext/html/{}{}I.htm"

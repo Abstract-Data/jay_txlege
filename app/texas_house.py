@@ -3,8 +3,9 @@ from bs4 import BeautifulSoup
 from dataclasses import dataclass, field
 from typing import Final, Dict
 import tomli
+from pathlib import Path
 
-with open("tlo_urls.toml", "rb") as config:
+with open(Path(__file__).parent / "tlo_urls.toml", "rb") as config:
     urls: Dict = tomli.load(config)
 
 
@@ -147,3 +148,29 @@ class LegislativeMember:
 
     def get_bill(self, chamber, number):
         return self.legislation.get(f"{chamber.upper()} {number}")
+
+
+@dataclass
+class BillDetails:
+    chamber: str
+    number: int
+    _session: str = LEGISLATIVE_SESSION
+
+    def __post_init__(self):
+        self.last_action = None
+        self.caption_version = None
+        self.caption_text = None
+        self.authors = None
+        self.coauthors = None
+        self.sponsors = None
+        self.subjects = None
+        self.companion = None
+        self.house_committee = None
+        self.house_committee_details = {self.house_committee: None}
+        self.house_committee_details['status'] = None
+        self.house_committee_details['votes'] = None
+        self.senate_committee = None
+        self.senate_committee_details = {self.senate_committee: None}
+        self.senate_committee_details['status'] = None
+        self.senate_committee_details['votes'] = None
+        self.actions = None
